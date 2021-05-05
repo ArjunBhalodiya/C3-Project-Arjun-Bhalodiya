@@ -49,26 +49,15 @@ public class Restaurant {
   }
 
   public double estimatedBillAmount(ArrayList<String> chosenDishes) throws itemNotFoundException {
-    throw new itemNotFoundException("");
-  }
+    double totalBill = 0;
+    if (chosenDishes == null || chosenDishes.size() == 0) return totalBill;
 
-  public void displayDetails() {
-    System.out.println(
-        "Restaurant:"
-            + name
-            + "\n"
-            + "Location:"
-            + location
-            + "\n"
-            + "Opening time:"
-            + openingTime
-            + "\n"
-            + "Closing time:"
-            + closingTime
-            + "\n"
-            + "Menu:"
-            + "\n"
-            + getMenu());
+    for (String dishName : chosenDishes) {
+      Item dish = findItemByName(dishName);
+      if (dish == null) throw new itemNotFoundException(dishName);
+      totalBill += dish.getPrice();
+    }
+    return totalBill;
   }
 
   public String getName() {
