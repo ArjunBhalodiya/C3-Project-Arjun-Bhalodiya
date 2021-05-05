@@ -48,6 +48,10 @@ public class Restaurant {
     menu.remove(itemToBeRemoved);
   }
 
+  public double estimatedBillAmount(ArrayList<String> chosenDishes) throws itemNotFoundException {
+    throw new itemNotFoundException("");
+  }
+
   public void displayDetails() {
     System.out.println(
         "Restaurant:"
